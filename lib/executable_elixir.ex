@@ -3,16 +3,16 @@ defmodule ExecutableElixir do
   Documentation for ExecutableElixir.
   """
 
-  @doc """
-  Hello world.
+  use Application
 
-  ## Examples
+  def start(_type, _args) do
+    import Supervisor.Spec
+    
+    IO.puts "Hi there! This is the Elixir single executable starting..."
 
-      iex> ExecutableElixir.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    children = [
+      worker(ExecutableElixir.Main, [])
+    ]
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end
