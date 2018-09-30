@@ -7,8 +7,6 @@ defmodule ExecutableElixir do
 
   def start(_type, _args) do
     import Supervisor.Spec
-    
-    IO.puts "Hi there! This is the Elixir single executable starting..."
 
     children = [
       worker(ExecutableElixir.Main, [])

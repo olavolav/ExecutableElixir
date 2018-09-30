@@ -14,8 +14,6 @@ defmodule ExecutableElixir.Main do
   ######################
 
   def init(state) do
-    Process.send_after(self(), :stopnow, 100)
-
     IO.puts "*** ExecutableElixir ***"
 
     IO.puts "Checking requirements..."
