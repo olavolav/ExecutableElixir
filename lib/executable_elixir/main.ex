@@ -14,7 +14,14 @@ defmodule ExecutableElixir.Main do
   ######################
 
   def init(state) do
-    # schedule_work() # Schedule work to be performed on start
+    Process.send_after(self(), :stopnow, 100)
+
+    IO.puts "*** ExecutableElixir ***"
+
+    IO.puts "Checking requirements..."
+    IO.puts "done."
+
+    :init.stop()
     {:ok, state}
   end
 end
